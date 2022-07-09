@@ -1,28 +1,14 @@
-import { useState, useEffect } from "react";
+import { useContext } from 'react';
+import { ThemeContext } from '#/contexts/theme';
 
 const useTheme = () => {
-  const [theme, setTheme] = useState("light");
+  const theme = useContext(ThemeContext);
 
-  const toggleTheme = () => {
-    if (theme != "dark") {
-      localStorage.setItem("theme", "dark");
-      setTheme("dark");
-    } else {
-      localStorage.setItem("theme", "light");
-      setTheme("light");
-    }
-  };
+  if (!theme) {
+    throw new Error('Missing ThemeContext');
+  }
 
-  useEffect(() => {
-    const localTheme = localStorage.getItem("theme");
-    if (localTheme) {
-    }
-    setTheme(localTheme);
-  });
-  return {
-    theme,
-    toggleTheme,
-  };
+  return theme;
 };
 
 export default useTheme;

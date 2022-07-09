@@ -1,45 +1,84 @@
 {
-  "name": "fwt-gallery",
-  "version": "0.1.0",
+  "name": "ggd",
   "private": true,
-  "dependencies": {
-    "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.9.3",
-    "@mui/material": "^5.8.7",
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-icons": "^4.4.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
-  },
+  "version": "0.0.0",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "pretty": "prettier --write \"./**/*.{js,jsx,json,scss}\"",
+    "lint": "pnpm lint:js && pnpm lint:scss",
+    "lint:js": "eslint \"**/*.{js,jsx}\"",
+    "lint:scss": "stylelint \"**/*.scss\" --allow-empty-input",
+    "lint:fix": "eslint --fix \"**/*.{js,jsx}\" && stylelint --fix \"**/*.scss\" --allow-empty-input",
+    "lint:staged": "lint-staged --debug"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix"
     ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+    "*.scss": [
+      "stylelint --fix --allow-empty-input"
+    ],
+    "*.(ts,tsx,json,scss,md)": [
+      "prettier -c \"./**/*.{js,jsx,json,scss,md}\""
     ]
+  },
+  "dependencies": {
+    "@emotion/cache": "^11.9.3",
+    "@emotion/core": "^11.0.0",
+    "@emotion/css": "^11.9.0",
+    "@emotion/react": "^11.9.3",
+    "@emotion/server": "^11.4.0",
+    "@emotion/styled": "^11.9.3",
+    "@vitejs/plugin-react": "^1.3.2",
+    "husky": "^8.0.1",
+    "i18next": "^21.8.13",
+    "i18next-browser-languagedetector": "^6.1.4",
+    "i18next-http-backend": "^1.4.1",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-i18next": "^11.18.0",
+    "react-icons": "^4.4.0",
+    "react-router-dom": "^6.3.0",
+    "vite-plugin-mkcert": "^1.7.2",
+    "vite-plugin-svgr": "^2.2.0"
   },
   "devDependencies": {
-    "sass": "^1.53.0"
+    "@babel/preset-react": "^7.18.6",
+    "@emotion/babel-plugin": "^11.9.2",
+    "@emotion/babel-preset-css-prop": "^11.2.0",
+    "@emotion/eslint-plugin": "^11.7.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "cssnano": "^5.1.12",
+    "eslint": "^8.19.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "lint-staged": "^13.0.3",
+    "postcss": "^8.4.14",
+    "postcss-import": "^14.1.0",
+    "postcss-mixins": "^9.0.3",
+    "prettier": "^2.7.1",
+    "sass": "^1.53.0",
+    "sass-loader": "^13.0.2",
+    "stylelint": "^14.9.1",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-recess-order": "^3.0.0",
+    "stylelint-config-recommended-scss": "^6.0.0",
+    "stylelint-config-standard-scss": "^4.0.0",
+    "vite": "^2.9.14",
+    "vitest": "^0.17.1"
   }
 }
