@@ -1,7 +1,7 @@
 const Breakpoints = {
   xs: 0,
   sm: 576,
-  md: 768,
+  md: 769,
   lg: 992,
   xl: 1200,
   xxl: 1440,
@@ -23,12 +23,13 @@ const palette = {
   },
   bg: {
     main: '#E5E5E5',
-    mainContent: '#e4e4e4',
+    mainContent: '#FFFFFF',
     modal: '#333',
     modalContent: '#444',
     highlight: '#6db6ff',
     buttonItem: '#656565',
-    header: '#E5E5E5;'
+    header: '#E5E5E5',
+    rangeInput: '#EFEFEF'
   },
   height: {
     headerContentHeight: '50px',
@@ -51,12 +52,13 @@ const paletteDark = {
   },
   bg: {
     main: '#000000',
-    mainContent: '#121314',
+    mainContent: '#0C0C0C',
     modal: '#333',
     modalContent: '#444',
     highlight: '#f65341',
     buttonItem: '#656565',
-    header: '#000000'
+    header: '#000000',
+    rangeInput: '#FFFFFF'
   }
 };
 

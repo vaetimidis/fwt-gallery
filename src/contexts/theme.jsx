@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
+import { PropTypes } from 'prop-types';
 import { ThemeProvider as ThemeEmotionProvider } from '@emotion/react';
 import { theme, themeDark } from '#/utils/theme';
 
@@ -11,8 +12,7 @@ export const themes = {
 
 // Theme layout provider setup
 //* ------------------------------------------------------------------------------------------ *//
-function ThemeProvider(props) {
-  const { children } = props;
+function ThemeProvider({ children }) {
   const [themeContext, setThemeContext] = useState(localStorage.getItem('__THEME__') || 'light');
 
   useEffect(() => {
@@ -30,3 +30,7 @@ function ThemeProvider(props) {
 }
 
 export default ThemeProvider;
+
+ThemeProvider.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired
+};

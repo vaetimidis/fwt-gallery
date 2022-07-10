@@ -8,5 +8,5 @@ export const MainStyled = styled.main`
   padding-top: ${({ theme }) => theme.palette.height.headerHeight};
   min-height: 100vh;
   height: 100%;
-  max-width: 1000px;
+  max-width: 1200px;
 `;

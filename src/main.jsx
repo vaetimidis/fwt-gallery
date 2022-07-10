@@ -6,16 +6,22 @@ import ReactDOM from 'react-dom/client';
 //* router
 import { BrowserRouter as Router } from 'react-router-dom';
 
-//* pages
-import App from './pages/App';
-
 //* i18n
 import '#/utils/i18n';
 
+//* redux
+import { Provider } from 'react-redux';
+import { store } from './store/store';
+
+//* pages
+import App from './pages/App';
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <App />
+      </Router>
+    </Provider>
   </React.StrictMode>
 );

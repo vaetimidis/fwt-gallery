@@ -1,17 +1,20 @@
 import React from 'react';
-import ControlPanel from '../../components/control/control-panel.component';
-import GalleryList from '../../components/gallery/gallery-list.component';
-import Pagination from '../../components/ui/pagination.component';
 
 //* componenets
+import GalleryList from '#/components/gallery/gallery-list.component';
+import ControlPanel from '#/components/control/control-panel.component';
+import Pagination from '#/components/ui/pagination.component';
 
 //* styles
 
 //* custom hook
+import { useGallery } from '#/hooks/store/useGallery';
 
 // Home page
 //* ------------------------------------------------------------------------------------------ *//
 const Home = () => {
+  useGallery();
+
   return (
     <div>
       <ControlPanel />

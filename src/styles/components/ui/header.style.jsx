@@ -35,7 +35,7 @@ export const HeaderNavStyled = styled.nav`
   width: 100%;
   height: 100%;
   padding: 0 10px;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
 `;
 
@@ -78,13 +78,11 @@ export const HeaderUlStyled = styled.ul`
       }
       transition: all 0.2s ease-out;
     }
-    &:first-child {
+
+    &:first-of-type {
       margin-right: auto;
       width: 100%;
       justify-content: flex-start;
-      @include mobile {
-        margin: 0;
-      }
     }
   }
 `;
