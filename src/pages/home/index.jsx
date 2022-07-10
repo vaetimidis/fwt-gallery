@@ -1,6 +1,7 @@
 import React from 'react';
 import ControlPanel from '../../components/control/control-panel.component';
 import GalleryList from '../../components/gallery/gallery-list.component';
+import Pagination from '../../components/ui/pagination.component';
 
 //* componenets
 
@@ -15,6 +16,7 @@ const Home = () => {
     <div>
       <ControlPanel />
       <GalleryList />
+      <Pagination />
     </div>
   );
 };

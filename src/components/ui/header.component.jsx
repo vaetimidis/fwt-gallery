@@ -1,7 +1,7 @@
 import React from 'react';
 
 //* icons
-import { GiSun, GiNightSleep } from 'react-icons/gi';
+import { BsSunFill, BsSun } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/icon/logo.svg';
 
@@ -16,8 +16,8 @@ import {
 import useTheme from '#/hooks/useTheme';
 
 const themeIcon = new Map([
-  ['light', <GiSun key={1} />],
-  ['dark', <GiNightSleep key={2} />]
+  ['light', <BsSunFill key={1} />],
+  ['dark', <BsSun key={2} />]
 ]);
 
 // Header components

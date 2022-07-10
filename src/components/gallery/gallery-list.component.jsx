@@ -4,6 +4,10 @@ import {
   GalleryListStyle,
   GalleryListWrapperStyle
 } from '#/styles/components/gallery/gallery-list.style';
+import {
+  GalleryImgStyle,
+  ItemFooterStyle
+} from '../../styles/components/gallery/gallery-list.style';
 
 const GalleryList = () => {
   return (
@@ -11,7 +15,10 @@ const GalleryList = () => {
       {[...Array(10)].map((x) => {
         return (
           <GalleryListItemStyle key={x}>
-            <GalleryListWrapperStyle>asd</GalleryListWrapperStyle>
+            <GalleryListWrapperStyle>
+              <GalleryImgStyle />
+              <ItemFooterStyle />
+            </GalleryListWrapperStyle>
           </GalleryListItemStyle>
         );
       })}
