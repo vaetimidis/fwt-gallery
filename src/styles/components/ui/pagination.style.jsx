@@ -1,10 +1,15 @@
 import styled from '@emotion/styled';
+import { breakpoint } from '#/utils/theme';
 
 export const PagiationStyled = styled.ul`
   display: flex;
   flex-direcion: row;
   list-style: none;
   margin-top: 40px;
+  ${breakpoint('sm')} {
+    display: flex;
+    padding: 0;
+  }
 `;
 
 export const PagiationItemStyled = styled.li`
@@ -15,11 +20,11 @@ export const PagiationItemStyled = styled.li`
   align-items: center;
   user-select: none;
   cursor: pointer;
-  border: 1px solid black;
+  border: ${({ theme }) => `1px solid ${theme.palette.color.text}`};
   border-right: none;
-  color: black;
+  color: ${({ theme }) => theme.palette.color.text};
   background: inherit;
-   &:first-of-type {
+  &:first-of-type {
     border-radius: 8px 0 0 8px;
     cursor: pointer;
   }
@@ -32,53 +37,16 @@ export const PagiationItemStyled = styled.li`
     border-radius: 8px;
   }
   &:hover {
-    background: #ededed;
-    color: black;
+    background-color: ${({ theme }) => theme.palette.bg.rangeInput};
+
     border-color: black;
   }
   &:disabled {
     border-color: #b3b3b3;
     color: #b3b3b3;
-
-    &:hover {
-      cursor: auto;
-      background: inherit;
-    }
-
-     &--dark {
-    border: 1px solid white;
-    color: white;
-    border-right: none;
-
-    &:hover {
-      background: #464646;
-      color: white;
-      border-color: white;
-    }
-    &:disabled {
-      border-color: #4c4c4c;
-      color: #4c4c4c;
-    }
   }
-  &.PaginationPageWithActive {
-    background: black;
-    color: white;
-    border-color: black;
-    &:hover {
-      cursor: auto;
-      background: black;
-      color: white;
-      border-color: black;
-    }
-    &--dark {
-      background: white;
-      color: black;
-      border-color: white;
-      &:hover {
-        background: white;
-        color: black;
-        border-color: white;
-      }
-    }
-  }  
+  &:active {
+    background-color: ${({ theme }) => theme.palette.bg.header};
+    color: ${({ theme }) => theme.palette.color.text};
+  }
 `;
