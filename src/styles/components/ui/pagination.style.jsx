@@ -1,15 +1,11 @@
 import styled from '@emotion/styled';
-import { breakpoint } from '#/utils/theme';
 
 export const PagiationStyled = styled.ul`
   display: flex;
   flex-direcion: row;
+
   list-style: none;
   margin-top: 40px;
-  ${breakpoint('sm')} {
-    display: flex;
-    padding: 0;
-  }
 `;
 
 export const PagiationItemStyled = styled.li`
@@ -37,16 +33,14 @@ export const PagiationItemStyled = styled.li`
     border-radius: 8px;
   }
   &:hover {
-    background-color: ${({ theme }) => theme.palette.bg.rangeInput};
-
-    border-color: black;
+    background-color: ${({ theme }) => theme.palette.bg.paginationHover};
   }
   &:disabled {
     border-color: #b3b3b3;
     color: #b3b3b3;
   }
   &:active {
-    background-color: ${({ theme }) => theme.palette.bg.header};
-    color: ${({ theme }) => theme.palette.color.text};
+    background-color: ${({ theme }) => theme.palette.bg.paginationActive};
+    color: ${({ theme }) => theme.palette.color.paginationActive};
   }
 `;

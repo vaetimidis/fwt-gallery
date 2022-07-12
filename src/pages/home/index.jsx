@@ -13,12 +13,12 @@ import { useGallery } from '#/hooks/store/useGallery';
 // Home page
 //* ------------------------------------------------------------------------------------------ *//
 const Home = () => {
-  useGallery();
+  const { paintings } = useGallery();
 
   return (
     <div>
       <ControlPanel />
-      <GalleryList />
+      <GalleryList paintings={paintings} />
       <Pagination />
     </div>
   );

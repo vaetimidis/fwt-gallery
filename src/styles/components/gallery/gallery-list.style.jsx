@@ -15,7 +15,6 @@ export const GalleryListStyle = styled.ul`
 
 export const GalleryListItemStyle = styled.li`
   padding: 10px;
-  height: 100px;
   width: 100%;
   ${breakpoint('md')} {
     width: 50%;
@@ -28,7 +27,16 @@ export const GalleryListItemStyle = styled.li`
 export const GalleryListWrapperStyle = styled.div`
   position: relative;
   background-color: #ffbbee;
-  height: 100%;
+  height: 360px;
+  ${breakpoint('xxl')} {
+    height: 300px;
+  }
+  ${breakpoint('xl')} {
+    height: 340px;
+  }
+  ${breakpoint('xs')} {
+    height: 280px;
+  }
   width: 100%;
   border-radius: 20px;
   overflow: hidden;
@@ -40,6 +48,7 @@ export const GalleryImgStyle = styled.img`
   align-items: center;
   width: 100%;
   height: 100%;
+  object-fit: cover;
 `;
 
 export const ItemFooterStyle = styled.div`
@@ -47,13 +56,39 @@ export const ItemFooterStyle = styled.div`
   bottom: 0;
   right: 0;
   width: 100%;
-  height: 20px;
-  background-color: #000;
+  height: 30px;
+  background-color: #ffffff75;
   z-index: 20;
 
   &:hover {
-    height: 45px;
+    height: 145px;
     transition: 0.2s height ease-in;
   }
   transition: 0.2s height ease-in;
+
+  > h1 {
+    color: #000000;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 20px;
+    padding: 5px 0 0 15px;
+  }
+  > div {
+    color: #000000;
+    display: flex;
+    flex-direction: row;
+    padding-left: 15px;
+    > span {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 20px;
+    }
+    > p {
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 20px;
+    }
+  }
 `;

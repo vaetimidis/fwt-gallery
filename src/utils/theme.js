@@ -19,7 +19,9 @@ const palette = {
     textInvert: '#e4e4e4',
     subTextInvert: '#6d6e6f',
     headerIcon: '#8b8c8d',
-    header: '#e0e0e0'
+    header: '#e0e0e0',
+    paginationActive: '#FFFFFF',
+    paginationBorder: '#000000'
   },
   bg: {
     main: '#E5E5E5',
@@ -29,7 +31,9 @@ const palette = {
     highlight: '#6db6ff',
     buttonItem: '#656565',
     header: '#E5E5E5',
-    rangeInput: '#EFEFEF'
+    rangeInput: '#EFEFEF',
+    paginationActive: '#000000',
+    paginationHover: '#EDEDED'
   },
   height: {
     headerContentHeight: '50px',
@@ -38,6 +42,7 @@ const palette = {
     content: '80px',
     footer: '20px'
   },
+
   divider: '#8e8e8e'
 };
 
@@ -48,7 +53,9 @@ const paletteDark = {
     textInvert: '#e4e4e4',
     subTextInvert: '#6d6e6f',
     headerIcon: '#babcbe',
-    header: '#e0e0e0'
+    header: '#e0e0e0',
+    paginationActive: '#000000',
+    paginationBorder: '#FFFFFF'
   },
   bg: {
     main: '#000000',
@@ -58,7 +65,9 @@ const paletteDark = {
     highlight: '#f65341',
     buttonItem: '#656565',
     header: '#000000',
-    rangeInput: '#FFFFFF'
+    rangeInput: '#FFFFFF',
+    paginationActive: '#FFFFFF',
+    paginationHover: '#464646'
   }
 };
 

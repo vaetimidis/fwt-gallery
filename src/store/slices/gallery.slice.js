@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { ApiStatus, api } from '#/utils/api';
 
 const fetchGallery = createAsyncThunk('gallery/fetchGallery', async () => {
-  const paintings = await api().gallery.get();
+  const paintings = await api().gallery.getPaintings();
   return paintings;
 });
 

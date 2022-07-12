@@ -42,6 +42,7 @@
             "ignorePropertyModificationsFor": ["state"]
           }
         ],
+        "react/forbid-prop-types": "off",
         "no-use-before-define": "off",
         "no-debugger": "warn",
         "no-console": "off",

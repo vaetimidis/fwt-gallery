@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import {
   GalleryListItemStyle,
   GalleryListStyle,
@@ -9,15 +10,30 @@ import {
   ItemFooterStyle
 } from '../../styles/components/gallery/gallery-list.style';
 
-const GalleryList = () => {
+const GalleryList = (props) => {
+  const { paintings } = props;
   return (
     <GalleryListStyle>
-      {[...Array(10)].map((x) => {
+      {paintings.map((x) => {
         return (
           <GalleryListItemStyle key={x}>
             <GalleryListWrapperStyle>
-              <GalleryImgStyle />
-              <ItemFooterStyle />
+              <GalleryImgStyle src={`https://test-front.framework.team/${x.imageUrl}`} />
+              <ItemFooterStyle>
+                <h1>{x.name}</h1>
+                <div>
+                  <span>Author: </span>
+                  <p>asd</p>
+                </div>
+                <div>
+                  <span>Created: </span>
+                  <p>{x.created}</p>
+                </div>
+                <div>
+                  <span>Location: </span>
+                  <p>asd</p>
+                </div>
+              </ItemFooterStyle>
             </GalleryListWrapperStyle>
           </GalleryListItemStyle>
         );
@@ -27,3 +43,7 @@ const GalleryList = () => {
 };
 
 export default GalleryList;
+
+GalleryList.propTypes = {
+  paintings: PropTypes.object.isRequired
+};
