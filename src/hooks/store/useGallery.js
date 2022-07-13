@@ -9,11 +9,13 @@ export const useGallery = () => {
   const dispatch = useDispatch();
 
   const {} = bindActionCreators(ActionCreatorsApp.actions, dispatch);
-  const { status, error, range, paintings } = useSelector((state) => state.gallery);
+  const { status, error, range, paintings, authors, locations } = useSelector(
+    (state) => state.gallery
+  );
 
   useEffect(() => {
     dispatch(fetchGallery());
   }, [range]);
 
-  return { status, error, paintings };
+  return { status, error, paintings, authors, locations };
 };

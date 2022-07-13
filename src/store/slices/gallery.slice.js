@@ -3,7 +3,10 @@ import { ApiStatus, api } from '#/utils/api';
 
 const fetchGallery = createAsyncThunk('gallery/fetchGallery', async () => {
   const paintings = await api().gallery.getPaintings();
-  return paintings;
+  const authors = await api().gallery.getAuthors();
+  const locations = await api().gallery.getLocations();
+
+  return { paintings, authors, locations };
 });
 
 // Gallery slice state
@@ -13,6 +16,8 @@ const initialState = {
   error: null,
 
   paintings: [],
+  authors: [],
+  locations: [],
 
   range: {
     valueFrom: '',
@@ -35,7 +40,9 @@ const gallerySlice = createSlice({
     });
     builder.addCase(fetchGallery.fulfilled, (state, action) => {
       state.status = ApiStatus.FULFILLED;
-      state.paintings = action.payload;
+      state.paintings = action.payload.paintings;
+      state.authors = action.payload.authors;
+      state.locations = action.payload.locations;
     });
     builder.addCase(fetchGallery.rejected, (state, action) => {
       state.status = ApiStatus.REJECTED;

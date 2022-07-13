@@ -11,7 +11,7 @@ import {
 } from '../../styles/components/gallery/gallery-list.style';
 
 const GalleryList = (props) => {
-  const { paintings, authors } = props;
+  const { paintings, authors, locations } = props;
 
   return (
     <GalleryListStyle>
@@ -24,7 +24,7 @@ const GalleryList = (props) => {
                 <h1>{x.name}</h1>
                 <div>
                   <span>Author: </span>
-                  <p>{authors.name}</p>
+                  <p>{authors.find((y) => y.id === x.authorId).name}</p>
                 </div>
                 <div>
                   <span>Created: </span>
@@ -32,7 +32,7 @@ const GalleryList = (props) => {
                 </div>
                 <div>
                   <span>Location: </span>
-                  <p>asd</p>
+                  <p>{locations.find((z) => z.id === x.locationId).location}</p>
                 </div>
               </ItemFooterStyle>
             </GalleryListWrapperStyle>
@@ -47,5 +47,6 @@ export default GalleryList;
 
 GalleryList.propTypes = {
   paintings: PropTypes.object.isRequired,
-  authors: PropTypes.object.isRequired
+  authors: PropTypes.object.isRequired,
+  locations: PropTypes.object.isRequired
 };

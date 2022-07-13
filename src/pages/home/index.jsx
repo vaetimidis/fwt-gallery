@@ -9,21 +9,20 @@ import Pagination from '#/components/ui/pagination.component';
 
 //* custom hook
 import { useGallery } from '#/hooks/store/useGallery';
-import { useAuthors } from '#/hooks/store/useAuthors';
+import { ApiStatus } from '../../utils/api';
 
 // Home page
 //* ------------------------------------------------------------------------------------------ *//
 const Home = () => {
-  const { paintings } = useGallery();
-  const { authors } = useAuthors();
+  const { paintings, authors, locations, status } = useGallery();
 
-  return (
+  return status !== ApiStatus.PENDING ? (
     <div>
       <ControlPanel />
-      <GalleryList paintings={paintings} authors={authors} />
+      <GalleryList paintings={paintings} authors={authors} locations={locations} />
       <Pagination />
     </div>
-  );
+  ) : null;
 };
 
 export default Home;
