@@ -11,7 +11,8 @@ import {
 } from '../../styles/components/gallery/gallery-list.style';
 
 const GalleryList = (props) => {
-  const { paintings } = props;
+  const { paintings, authors } = props;
+
   return (
     <GalleryListStyle>
       {paintings.map((x) => {
@@ -23,7 +24,7 @@ const GalleryList = (props) => {
                 <h1>{x.name}</h1>
                 <div>
                   <span>Author: </span>
-                  <p>asd</p>
+                  <p>{authors.name}</p>
                 </div>
                 <div>
                   <span>Created: </span>
@@ -45,5 +46,6 @@ const GalleryList = (props) => {
 export default GalleryList;
 
 GalleryList.propTypes = {
-  paintings: PropTypes.object.isRequired
+  paintings: PropTypes.object.isRequired,
+  authors: PropTypes.object.isRequired
 };

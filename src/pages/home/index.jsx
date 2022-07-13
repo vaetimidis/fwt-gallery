@@ -9,16 +9,18 @@ import Pagination from '#/components/ui/pagination.component';
 
 //* custom hook
 import { useGallery } from '#/hooks/store/useGallery';
+import { useAuthors } from '#/hooks/store/useAuthors';
 
 // Home page
 //* ------------------------------------------------------------------------------------------ *//
 const Home = () => {
   const { paintings } = useGallery();
+  const { authors } = useAuthors();
 
   return (
     <div>
       <ControlPanel />
-      <GalleryList paintings={paintings} />
+      <GalleryList paintings={paintings} authors={authors} />
       <Pagination />
     </div>
   );
