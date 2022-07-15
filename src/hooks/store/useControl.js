@@ -8,10 +8,10 @@ export const useControl = () => {
   const dispatch = useDispatch();
 
   const { setRange } = bindActionCreators(ActionCreatorsApp.actions, dispatch);
-  const { range } = useSelector((state) => state.gallery);
+  const { range, authors, locations } = useSelector((state) => state.gallery);
 
   const handleOnChangeFrom = (value) => setRange({ valueFrom: value });
   const handleOnChangeBefore = (value) => setRange({ valueBefore: value });
 
-  return { range, handleOnChangeFrom, handleOnChangeBefore };
+  return { range, authors, locations, handleOnChangeFrom, handleOnChangeBefore };
 };

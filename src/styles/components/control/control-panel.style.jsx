@@ -4,7 +4,7 @@ import { breakpoint } from '#/utils/theme';
 export const ControlPanelStyle = styled.div`
   margin-top: 27px;
   display: flex;
-  gap: 20px;
+  gap: 30px;
   justify-content: center;
   padding: 0 10px;
   align-items: center;
@@ -12,7 +12,7 @@ export const ControlPanelStyle = styled.div`
   flex-direction: column;
   ${breakpoint('sm')} {
     flex-direction: row;
-    gap: 10px;
+    gap: 20px;
   }
 `;
 

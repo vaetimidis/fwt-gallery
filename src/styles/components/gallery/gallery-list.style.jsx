@@ -63,6 +63,7 @@ export const ItemFooterStyle = styled.div`
   &:hover {
     height: 145px;
     transition: 0.2s height ease-in;
+    z-index: 20;
   }
   transition: 0.2s height ease-in;
 
@@ -72,6 +73,7 @@ export const ItemFooterStyle = styled.div`
     font-size: 18px;
     line-height: 20px;
     padding: 5px 0 0 15px;
+    z-index: 20;
   }
   > div {
     color: #000000;
