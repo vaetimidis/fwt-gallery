@@ -3,12 +3,10 @@ import { PropTypes } from 'prop-types';
 import {
   GalleryListItemStyle,
   GalleryListStyle,
-  GalleryListWrapperStyle
-} from '#/styles/components/gallery/gallery-list.style';
-import {
+  GalleryListWrapperStyle,
   GalleryImgStyle,
   ItemFooterStyle
-} from '../../styles/components/gallery/gallery-list.style';
+} from '#/styles/components/gallery/gallery-list.style';
 
 const GalleryList = (props) => {
   const { paintings, authors, locations } = props;
@@ -17,7 +15,7 @@ const GalleryList = (props) => {
     <GalleryListStyle>
       {paintings.map((x) => {
         return (
-          <GalleryListItemStyle key={x}>
+          <GalleryListItemStyle key={x.id}>
             <GalleryListWrapperStyle>
               <GalleryImgStyle src={`https://test-front.framework.team/${x.imageUrl}`} />
               <ItemFooterStyle>
@@ -32,7 +30,7 @@ const GalleryList = (props) => {
                 </div>
                 <div>
                   <span>Location: </span>
-                  <p>{locations.find((z) => z.id === x.locationId).location}</p>
+                  <p>{locations.find((v) => v.id === x.locationId).location}</p>
                 </div>
               </ItemFooterStyle>
             </GalleryListWrapperStyle>

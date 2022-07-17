@@ -24,29 +24,31 @@ export const SelectStyle = styled.div`
     background-color: ${({ theme }) => theme.palette.bg.mainContent};
     border-bottom: ${({ isOpen, theme }) => isOpen && `1px solid ${theme.palette.color.subText}`};
     border-radius: ${({ isOpen }) => (isOpen ? '8px 8px 0 0' : '8px')};
+    padding-right: 50px;
+    overflow: hidden;
 
     > div {
-      width: 100%;
       height: 100%;
       display: flex;
       justify-content: flex-start;
       align-items: center;
       margin-left: 10px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
   }
 
   .content {
     position: absolute;
-    box-sizing: border-box;
-    justify-content: center;
-    align-items: flex-start;
-    align-self: center;
     width: 100%;
     top: 46px;
-    padding-left: 10px;
+    padding: 10px;
     border-radius: 0 0 8px 8px;
     font-weight: 500;
     font-size: 16px;
+    height: 400px;
+    overflow-x: scroll;
 
     background-color: ${({ theme }) => theme.palette.bg.mainContent};
     border: ${({ theme }) => `1px solid ${theme.palette.color.text}`};
@@ -57,8 +59,14 @@ export const SelectStyle = styled.div`
     flex-direction: column;
     gap: 15px;
 
-    > .content-item {
-      padding-top: 20px;
+    .content-item {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      min-height: 30px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
   }
 

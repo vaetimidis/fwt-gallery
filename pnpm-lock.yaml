@@ -42,6 +42,7 @@ specifiers:
   react-dom: ^18.2.0
   react-i18next: ^11.18.0
   react-icons: ^4.4.0
+  react-loader-spinner: ^5.1.5
   react-redux: ^8.0.2
   react-router-dom: ^6.3.0
   redux: ^4.2.0
@@ -78,6 +79,7 @@ dependencies:
   react-dom: 18.2.0_react@18.2.0
   react-i18next: 11.18.0_zqwsj3zkvc6lj2if6vhvnllc7u
   react-icons: 4.4.0_react@18.2.0
+  react-loader-spinner: 5.1.5_biqbaboplfbrettd7655fr4n2y
   react-redux: 8.0.2_rxpulxqxsibgdk5rs4llgxl6gy
   react-router-dom: 6.3.0_biqbaboplfbrettd7655fr4n2y
   redux: 4.2.0
@@ -3988,6 +3990,16 @@ packages:
 
   /react-is/18.2.0:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
+    dev: false
+
+  /react-loader-spinner/5.1.5_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-kHSBa3pNPNzd3UGOiOsHCC33qx5bZA7IHKau+YSTVn36Jib4eBVx/TNMggudbzW5CTnRCbP5bnYU4ACAX3mA6g==}
+    peerDependencies:
+      react: ^16.0.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /react-redux/8.0.2_rxpulxqxsibgdk5rs4llgxl6gy:

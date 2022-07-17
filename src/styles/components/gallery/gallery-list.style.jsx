@@ -1,6 +1,14 @@
 import styled from '@emotion/styled';
 import { breakpoint } from '#/utils/theme';
 
+export const GalleryLoaderStyle = styled.section`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 500px;
+`;
+
 export const GalleryListStyle = styled.ul`
   display: flex;
   flex-direction: row;
@@ -26,7 +34,7 @@ export const GalleryListItemStyle = styled.li`
 
 export const GalleryListWrapperStyle = styled.div`
   position: relative;
-  background-color: #ffbbee;
+  background-color: #ffffff75;
   height: 360px;
   ${breakpoint('xxl')} {
     height: 300px;

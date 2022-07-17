@@ -8,7 +8,7 @@ import useOutsideClick from '#/hooks/useOutsideClick';
 import { SelectStyle } from '#/styles/components/control/select.style';
 
 const Select = (props) => {
-  const { arr, title } = props;
+  const { arr, title, value, callback, onClose } = props;
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef(null);
 
@@ -21,17 +21,23 @@ const Select = (props) => {
 
   useOutsideClick(ref, hideMenu);
 
+  const handleOnClick = (v) => (e) => {
+    e.stopPropagation();
+    callback(v);
+    setIsOpen(false);
+  };
+
   return (
     <SelectStyle isOpen={isOpen} ref={ref} onClick={isOpen ? hideMenu : openMenu}>
       <div className="select">
-        <div>{title}</div>
+        <div>{value || title}</div>
       </div>
       <RiArrowDownSFill />
       {isOpen && (
-        <div className="content" onClick={(e) => e.stopPropagation()}>
+        <div className="content">
           {arr.map((x) => {
             return (
-              <div className="content-item" key={x.id}>
+              <div onClick={handleOnClick(x)} className="content-item" key={x.id}>
                 {x.value}
               </div>
             );
@@ -46,5 +52,7 @@ export default Select;
 
 Range.propTypes = {
   arr: PropTypes.array.isRequired,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  callback: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired
 };
