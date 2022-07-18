@@ -5,7 +5,7 @@ import useOutsideClick from '#/hooks/useOutsideClick';
 import { RangeStyle } from '#/styles/components/control/range.style';
 
 const Range = (props) => {
-  const { onClose, handleFrom, handleBefore, range } = props;
+  const { onClose, callback, range } = props;
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef(null);
 
@@ -28,13 +28,18 @@ const Range = (props) => {
         <div className="content" onClick={(e) => e.stopPropagation()}>
           <input
             placeholder="from"
-            onChange={(e) => handleFrom(e.target.value)}
+            onChange={(e) =>
+              callback({
+                valueFrom: e.target.value,
+                valueBefore: range.valueBefore < e.target.value ? e.target.value : range.valueBefore
+              })
+            }
             value={range.valueFrom}
           />
           <div className="separator" />
           <input
             placeholder="before"
-            onChange={(e) => handleBefore(e.target.value)}
+            onChange={(e) => callback({ ...range, valueBefore: e.target.value })}
             value={range.valueBefore}
           />
         </div>
@@ -47,7 +52,6 @@ export default Range;
 
 Range.propTypes = {
   onClose: PropTypes.func,
-  handleFrom: PropTypes.func.isRequired,
-  handleBefore: PropTypes.func.isRequired,
-  range: PropTypes.object.isRequired
+  range: PropTypes.object,
+  callback: PropTypes.func.isRequired
 };

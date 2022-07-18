@@ -6,6 +6,16 @@ export const PagiationStyled = styled.ul`
 
   list-style: none;
   margin-top: 40px;
+
+  .left-arrow {
+    opacity: ${({ isFirst }) => (isFirst ? '0.5' : '1')};
+    pointer-events: ${({ isFirst }) => (isFirst ? 'none' : 'all')};
+  }
+
+  .right-arrow {
+    opacity: ${({ isLast }) => (isLast ? '0.5' : '1')};
+    pointer-events: ${({ isLast }) => (isLast ? 'none' : 'all')};
+  }
 `;
 
 export const PagiationItemStyled = styled.li`

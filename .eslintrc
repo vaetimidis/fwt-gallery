@@ -49,7 +49,7 @@
         "no-console": "off",
         "no-useless-escape": "off",
         "default-param-last": "off",
-        "camelcase": "error",
+        "camelcase": "off",
         "spaced-comment": "error",
         "quotes": ["error", "single"],
 

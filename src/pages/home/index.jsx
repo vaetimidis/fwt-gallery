@@ -17,10 +17,10 @@ import { ApiStatus } from '#/utils/api';
 // Home page
 //* ------------------------------------------------------------------------------------------ *//
 const Home = () => {
-  const { paintings, authors, locations, status, statusPaintings } = useGallery();
-  const { page, pages, handleOnChangePage } = useControl();
+  const { paintings, authors, locations, status, isInit } = useGallery();
+  const { page, pagination, handleOnChangePage } = useControl();
 
-  if (status === ApiStatus.PENDING) {
+  if (!isInit) {
     return (
       <GalleryLoaderStyle>
         <BallTriangle height="100" width="100" color="grey" ariaLabel="loading-indicator" />
@@ -31,14 +31,16 @@ const Home = () => {
   return (
     <div>
       <ControlPanel />
-      {statusPaintings === ApiStatus.FULFILLED ? (
+      {status === ApiStatus.FULFILLED ? (
         <GalleryList paintings={paintings} authors={authors} locations={locations} />
       ) : (
         <GalleryLoaderStyle>
           <BallTriangle height="100" width="100" color="grey" ariaLabel="loading-indicator" />
         </GalleryLoaderStyle>
       )}
-      <Pagination page={page} pages={pages} callback={handleOnChangePage} />
+      {paintings.length ? (
+        <Pagination page={page} pagination={pagination} callback={handleOnChangePage} />
+      ) : null}
     </div>
   );
 };

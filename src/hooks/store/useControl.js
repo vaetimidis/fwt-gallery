@@ -1,45 +1,33 @@
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import ActionCreatorsApp, { fetchPaintings } from '#/store/slices/gallery.slice';
-import { ApiStatus } from '#/utils/api';
+import ActionCreatorsApp from '#/store/slices/gallery.slice';
 
 // Control Hook Selector / Dispatch
 //* ------------------------------------------------------------------------------------------ *//
 export const useControl = () => {
   const dispatch = useDispatch();
 
-  const { setRange, setLocation, setAuthor, setPage } = bindActionCreators(
+  const { setRange, setLocation, setAuthor, setPage, setSearch } = bindActionCreators(
     ActionCreatorsApp.actions,
     dispatch
   );
-  const { statusPaintings, range, authors, locations, location, author, page, pages } = useSelector(
-    (state) => state.gallery
-  );
+  const { author, page, range, ...props } = useSelector((state) => state.gallery);
 
-  const handleOnChangeFrom = (value) => setRange({ valueFrom: value });
-  const handleOnChangeBefore = (value) => setRange({ valueBefore: value });
+  const handleOnChangeRange = (value) => setRange(value);
   const handleOnChangeLocation = (value) => setLocation(value);
   const handleOnChangeAuthor = (value) => setAuthor(value);
   const handleOnChangePage = (value) => setPage(value);
-
-  useEffect(() => {
-    if (statusPaintings !== ApiStatus.NONE)
-      dispatch(fetchPaintings({ authorId: author.id, _page: page }));
-  }, [range, location, author, page]);
+  const handleOnChangeSearch = (value) => setSearch(value);
 
   return {
-    location,
+    ...props,
     author,
     page,
     range,
-    pages,
-    authors,
-    locations,
-    handleOnChangeFrom,
-    handleOnChangeBefore,
+    handleOnChangeRange,
     handleOnChangeLocation,
     handleOnChangeAuthor,
-    handleOnChangePage
+    handleOnChangePage,
+    handleOnChangeSearch
   };
 };

@@ -30,7 +30,7 @@ const GalleryList = (props) => {
                 </div>
                 <div>
                   <span>Location: </span>
-                  <p>{locations.find((v) => v.id === x.locationId).location}</p>
+                  <p>{locations.find((z) => z.id === x.locationId).location}</p>
                 </div>
               </ItemFooterStyle>
             </GalleryListWrapperStyle>
@@ -44,7 +44,7 @@ const GalleryList = (props) => {
 export default GalleryList;
 
 GalleryList.propTypes = {
-  paintings: PropTypes.object.isRequired,
-  authors: PropTypes.object.isRequired,
-  locations: PropTypes.object.isRequired
+  paintings: PropTypes.array.isRequired,
+  authors: PropTypes.array.isRequired,
+  locations: PropTypes.array.isRequired
 };

@@ -15,12 +15,3 @@ export const ControlPanelStyle = styled.div`
     gap: 20px;
   }
 `;
-
-export const SearchStyle = styled.input`
-  width: 100%;
-  height: 45px;
-  font-size: 15px;
-  border: 1px solid #000000;
-  padding-left: 10px;
-  border-radius: 8px;
-`;

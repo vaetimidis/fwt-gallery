@@ -1,31 +1,36 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { ApiStatus, api } from '#/utils/api';
 
-const fetchGallery = createAsyncThunk('gallery/fetchGallery', async ({ authorId, _page }) => {
-  const paintings = await api().gallery.getPaintings({ authorId, _page });
-  const authors = await api().gallery.getAuthors();
-  const locations = await api().gallery.getLocations();
+const fetchPaintings = createAsyncThunk(
+  'gallery/fetchPaintings',
+  async ({ q, authorId, locationId, _page, created_gte, created_lte }) => {
+    const { paintings, total } = await api().gallery.getPaintings({
+      q,
+      authorId,
+      locationId,
+      _page,
+      created_gte: created_gte || undefined,
+      created_lte: created_lte || undefined
+    });
 
-  return { paintings, authors, locations };
-});
-
-const fetchPaintings = createAsyncThunk('gallery/fetchPaintings', async ({ authorId, _page }) => {
-  const paintings = await api().gallery.getPaintings({ authorId, _page });
-
-  return { paintings };
-});
+    return { paintings, total };
+  }
+);
 
 // Gallery slice state
 //* ------------------------------------------------------------------------------------------ *//
 const initialState = {
+  isInit: false,
   status: ApiStatus.NONE,
-  statusPaintings: ApiStatus.NONE,
   error: null,
 
   paintings: [],
   authors: [],
   locations: [],
-  pages: 4,
+  pagination: {
+    total: 0,
+    limit: 10
+  },
 
   range: {
     valueFrom: '',
@@ -33,51 +38,52 @@ const initialState = {
   },
   location: {},
   author: {},
+  q: '',
   page: 1
 };
-//* - Slice ------------------------------------------------------------------------------------------//
+
+//* - Slice ------------------------------------a------------------------------------------------------//
 const gallerySlice = createSlice({
   name: 'gallery',
   initialState,
   reducers: {
     reset: () => initialState,
+    init: (state, { payload }) => {
+      state.authors = payload.authors;
+      state.locations = payload.locations;
+      state.isInit = true;
+    },
     setRange: (state, { payload }) => {
       state.range = { ...state.range, ...payload };
+      state.page = 1;
     },
     setLocation: (state, { payload }) => {
       state.location = payload;
+      state.page = 1;
     },
     setAuthor: (state, { payload }) => {
       state.author = payload;
+      state.page = 1;
+    },
+    setSearch: (state, { payload }) => {
+      state.q = payload;
+      state.page = 1;
     },
     setPage: (state, { payload }) => {
       state.page = payload;
     }
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchGallery.pending, (state) => {
+    builder.addCase(fetchPaintings.pending, (state) => {
       state.status = ApiStatus.PENDING;
     });
-    builder.addCase(fetchGallery.fulfilled, (state, action) => {
-      state.status = ApiStatus.FULFILLED;
-      state.statusPaintings = ApiStatus.FULFILLED;
-      state.paintings = action.payload.paintings;
-      state.authors = action.payload.authors;
-      state.locations = action.payload.locations;
-    });
-    builder.addCase(fetchGallery.rejected, (state, action) => {
-      state.status = ApiStatus.REJECTED;
-      state.error = action.error;
-    });
-    builder.addCase(fetchPaintings.pending, (state) => {
-      state.statusPaintings = ApiStatus.PENDING;
-    });
     builder.addCase(fetchPaintings.fulfilled, (state, action) => {
-      state.statusPaintings = ApiStatus.FULFILLED;
+      state.status = ApiStatus.FULFILLED;
       state.paintings = action.payload.paintings;
+      state.pagination.total = action.payload.total;
     });
     builder.addCase(fetchPaintings.rejected, (state, action) => {
-      state.statusPaintings = ApiStatus.REJECTED;
+      state.status = ApiStatus.REJECTED;
       state.error = action.error;
     });
   }
@@ -85,4 +91,4 @@ const gallerySlice = createSlice({
 
 export const { reset } = gallerySlice.actions;
 export default gallerySlice;
-export { fetchGallery, fetchPaintings };
+export { fetchPaintings };

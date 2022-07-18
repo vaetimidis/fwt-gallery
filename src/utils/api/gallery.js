@@ -1,12 +1,12 @@
 ///                                                                                 //
 export const GalleryApi = (instance) => ({
   async getPaintings(params) {
-    const { data } = await instance.get('paintings', {
+    const { data, headers } = await instance.get('paintings', {
       params: {
         ...params
       }
     });
-    return data;
+    return { paintings: data, total: headers['x-total-count'] };
   },
   async getAuthors() {
     const { data } = await instance.get('authors', {
